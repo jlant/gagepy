@@ -14,6 +14,7 @@ import pytest
 import numpy as np
 from gagepy import utils
 from datetime import datetime
+import os
 
 def test_is_float():
 
@@ -116,7 +117,7 @@ def test_add_ending():
     assert utils.add_ending(file="dv.txt", suffix="", ext="") == "dv.txt"
     assert utils.add_ending(file="dv.txt", suffix="summary", ext="") == "dv-summary.txt"
     assert utils.add_ending(file="dv.rdb", suffix="summary", ext=".rst", delimiter="_") == "dv_summary.rst"
-    assert utils.add_ending(file="/home/play/dv.rdb", suffix="summary", ext=".rst") == "/home/play/dv-summary.rst"
+    assert utils.add_ending(file=os.path.join(os.path.sep, "home", "play", "dv.rdb"), suffix="summary", ext=".rst") == os.path.join(os.path.sep, "home", "play", "dv-summary.rst")
     assert utils.add_ending(file="daily values.rdb", suffix="summary", ext=".rst") == "daily-values-summary.rst"
     assert utils.add_ending(file="usgs daily values.rdb", suffix="summary", ext=".rst", delimiter="_") == "usgs_daily_values_summary.rst"
 
