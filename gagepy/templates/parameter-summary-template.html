@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Parameter Summary</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>{{ name }} ({{ units }})</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Parameter Info</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Start date</td>
+                            <td>{{ start_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>End date</td>
+                            <td>{{ end_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>No. values</td>
+                            <td>{{ num_vals }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Quick Stats</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>Value</th>
+                            <th>Date and Time</th>
+                        </tr>
+                        <tr>
+                            <td>Max</td>
+                            <td>{{ '{0:0.2f}'.format(max) }}</td>
+                            <td>{{ max_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Min</td>
+                            <td>{{ '{0:0.2f}'.format(min) }}</td>
+                            <td>{{ min_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mean</td>
+                            <td>{{ '{0:0.2f}'.format(mean) }}</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Interactive Plot</h4>
+                {{ plot }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

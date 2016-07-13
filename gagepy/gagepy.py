@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
     gagepy.gagepy
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~
 
-    A short description.
+    Main controller.
 
-    :authors: 2016 by Jeremiah Lant, see AUTHORS
-    :license: CC0 1.0, see LICENSE file for details
+    :copyright: 2015 by Jeremiah Lant, see AUTHORS
+    :license: United States Geological Survey (USGS), see LICENSE file for more details
 """
 
 def hello(msg="World"):

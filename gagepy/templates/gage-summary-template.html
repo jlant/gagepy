@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gage Summary</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>{{ gage_name }}</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3>Parameters</h3>
+                    <ol>
+                        {% for parameter in parameters %}
+
+                        <li><a href="#{{ parameter.name }}">{{ parameter.name }} ({{ parameter.units }})</a></li>
+
+                        {% endfor %}
+                    </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {% for parameter in parameters %}
+
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3><a name="{{ parameter.name }}">{{ parameter.name }} ({{ parameter.units }})</a></h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Parameter Info</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>Start date</td>
+                                    <td>{{ parameter.dates[0] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>End date</td>
+                                    <td>{{ parameter.dates[-1] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>No. values</td>
+                                    <td>{{ parameter.values|length }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Quick Stats</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>Value</th>
+                                    <th>Date and Time</th>
+                                </tr>
+                                <tr>
+                                    <td>Max</td>
+                                    <td>{{ '{0:0.2f}'.format(parameter.max) }}</td>
+                                    <td>{{ parameter.max_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Min</td>
+                                    <td>{{ '{0:0.2f}'.format(parameter.min) }}</td>
+                                    <td>{{ parameter.min_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mean</td>
+                                    <td>{{ '{0:0.2f}'.format(parameter.mean) }}</td>
+                                    <td></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Interactive Plot</h4>
+                        {{ parameter.plot_html() }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </div>
+
+    </body>
+</html>

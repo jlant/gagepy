@@ -39,6 +39,11 @@ setup(
     ],
     package_dir={"gagepy":
                  "gagepy"},
+    entry_points={
+        "console_scripts": [
+            "gagepy = gagepy.cli:main",
+        ]
+    },
     include_package_data=True,
     install_requires=requirements,
     license=license,

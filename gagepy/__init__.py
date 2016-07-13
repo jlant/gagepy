@@ -6,7 +6,7 @@
 
     Nutshell
     --------
-    Here a small example of using gagepy
+    Here is a small example of using gagepy
 
     :authors: 2016 by Jeremiah Lant, see AUTHORS
     :license: CC0 1.0, see LICENSE file for details
