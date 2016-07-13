@@ -3,16 +3,18 @@
         :alt: U.S. Geological Survey logo
 
 gagepy
-===============================
+======
 
-A Python package that processes and analyzes data files from United States Geological Survey (USGS) streamflow gages.
-
+A Python package that processes and analyzes data files from `U.S. Geological Survey (USGS)`_ streamflow gages.  The
+USGS_ streamflow gages provide water data across the United States.  Streamflow gage data
+and corresponding data files can be found at the USGS_ `National Water Information System (NWIS)`_.
 
 Features
 --------
 
-Add a list of features.
-
+* Processes `U.S. Geological Survey (USGS)`_ streamflow gage data files available from the USGS_ `National Water Information System (NWIS)`_ in various formats including ``*.rdb`` and ``*.json``.
+* Easily generate a gage summary web page that includes interactive plots and tables.
+* User-friendly command-line interface.
 
 Example
 -------
@@ -44,7 +46,8 @@ To run the test suite, from the command line in the project's root directory::
 Requirements
 ------------
 
-Add requirements and code dependencies.
+* Click_ (v6.6)
+* mpld3_ (v0.2)
 
 
 Installation
@@ -143,3 +146,6 @@ Jeremiah Lant <jlant@usgs.gov>
 .. _Distutils: https://docs.python.org/3/library/distutils.html
 .. _Installing Python Modules: https://docs.python.org/3.5/install/
 .. _How Installation Works: https://docs.python.org/3.5/install/#how-installation-works
+.. _National Water Information System (NWIS): http://waterdata.usgs.gov/nwis
+.. _Click: http://click.pocoo.org/6/
+.. _mpld3: http://mpld3.github.io/
