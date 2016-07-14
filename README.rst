@@ -45,8 +45,8 @@ Process a data file from the USGS streamgage 03287500 on the Kentucky River near
 The following example shows how to create a summary webpage with interactive plots and tables using the ``--html``
 option on a USGS tab-delimited (`RDB format`_) streamgage data file.
 
-.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/tree/master/docs/_static/gagepy-screencast.gif
-        :alt: Gagepy screencast
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/blob/master/docs/_static/gagepy-screencast.gif
+        :alt: gagepy screencast
 
 ::
 
@@ -71,14 +71,12 @@ explains how it is handling that missing data.
 
 The following is a screen capture of the top of the resulting summary web page:
 
-.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/tree/master/docs/_static/usgs-03287500-uv-summary-table.png
-        :target: data/usgs-03287500-uv-summary.html
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/blob/master/docs/_static/usgs-03287500-uv-summary-table.png
         :alt: Top of the summary web page
 
 The following is a screen capture of an interactive plot on the resulting summary web page:
 
-.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/tree/master/docs/_static/usgs-03287500-uv-summary-plot.png
-        :target: data/usgs-03287500-uv-summary.html
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/blob/master/docs/_static/usgs-03287500-uv-summary-plot.png
         :alt: Interactive plot on the summary web page
 
 To view the resulting summary web page, open the "usgs-03287500-uv-summary.html" web page in a web browser.
