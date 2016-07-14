@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gagepy.utils &mdash; gagepy 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="gagepy 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for gagepy.utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    gagepy.utils</span>
+<span class="sd">    ~~~~~~~~~~~~</span>
+
+<span class="sd">    Utility helper functions for gagepy.</span>
+
+<span class="sd">    :authors: 2016 by Jeremiah Lant, see AUTHORS</span>
+<span class="sd">    :license: United States Geological Survey (USGS), see LICENSE file</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+
+<div class="viewcode-block" id="get_file_paths"><a class="viewcode-back" href="../../code.html#gagepy.utils.get_file_paths">[docs]</a><span class="k">def</span> <span class="nf">get_file_paths</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a list of absolute file paths for certain files files in a directory.  Walks through</span>
+<span class="sd">    subdirectories.</span>
+
+<span class="sd">    :param dirname: Name of directory to start walking</span>
+<span class="sd">    :type dirname: string</span>
+<span class="sd">    :param file_ext: File extension to look for</span>
+<span class="sd">    :file_ext type: string</span>
+<span class="sd">    :returns: List of absolute file paths</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">file_ext</span> <span class="ow">and</span> <span class="n">filepath</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">file_ext</span><span class="p">):</span>
+                <span class="n">file_paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">file_paths</span></div>
+
+
+<div class="viewcode-block" id="get_file_info"><a class="viewcode-back" href="../../code.html#gagepy.utils.get_file_info">[docs]</a><span class="k">def</span> <span class="nf">get_file_info</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a file&#39;s directory and name for a file path.</span>
+
+<span class="sd">    :param filepath: Path to file</span>
+<span class="sd">    :type filepath: string</span>
+<span class="sd">    :returns: File directory and file name</span>
+<span class="sd">    :type: tuple</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filedir</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="c1"># filedir is an empty string when file is in current directory</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">filedir</span><span class="p">:</span>
+        <span class="n">filedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">filedir</span><span class="p">,</span> <span class="n">filename</span></div>
+
+
+<div class="viewcode-block" id="rmchars"><a class="viewcode-back" href="../../code.html#gagepy.utils.rmchars">[docs]</a><span class="k">def</span> <span class="nf">rmchars</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Remove special characters from alphanumeric values except for period (.)</span>
+<span class="sd">    and negative (-) characters.</span>
+
+<span class="sd">    :param value: Alphanumeric value</span>
+<span class="sd">    :type value: string</span>
+<span class="sd">    :returns: Alphanumeric value stripped of any special characters</span>
+<span class="sd">    :rtype: string</span>
+
+<span class="sd">    &gt;&gt;&gt; import utils</span>
+<span class="sd">    &gt;&gt;&gt; utils.rmchars(value = &quot;*6.5_&quot;)</span>
+<span class="sd">    &#39;6.5&#39;</span>
+<span class="sd">    &gt;&gt;&gt; utils.rmchars(value = &quot;ICE&quot;)</span>
+<span class="sd">    &#39;ICE&#39;</span>
+<span class="sd">    &gt;&gt;&gt; utils.rmchars(value = &quot;-4.2&quot;)</span>
+<span class="sd">    &#39;-4.2&#39;</span>
+<span class="sd">    &gt;&gt;&gt; utils.rmchars(value = &quot;%&amp;!@#8.32&amp;#*;&quot;)</span>
+<span class="sd">    &#39;8.32&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[^A-Za-z0-9.-]+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="is_float"><a class="viewcode-back" href="../../code.html#gagepy.utils.is_float">[docs]</a><span class="k">def</span> <span class="nf">is_float</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return True if a string value can be converted to a float and False otherwise.</span>
+
+<span class="sd">    :param value: Value to check</span>
+<span class="sd">    :rtype: bool</span>
+
+<span class="sd">    &gt;&gt;&gt; import utils</span>
+<span class="sd">    &gt;&gt;&gt; utils.is_float(value = &quot;2.5&quot;)</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; utils.is_float(value = &quot;hello world&quot;)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; utils.is_float(value = &quot;5.5_&quot;)</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span></div>
+
+
+<div class="viewcode-block" id="to_float"><a class="viewcode-back" href="../../code.html#gagepy.utils.to_float">[docs]</a><span class="k">def</span> <span class="nf">to_float</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a value to a float type.</span>
+
+<span class="sd">    :param value: Value to convert to float</span>
+<span class="sd">    :returns: Value as a float</span>
+<span class="sd">    :rtype: float</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">rmchars</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_float</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can not convert {} value to a float&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="to_nan"><a class="viewcode-back" href="../../code.html#gagepy.utils.to_nan">[docs]</a><span class="k">def</span> <span class="nf">to_nan</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a value to a numpy nan and print a message if available.</span>
+
+<span class="sd">    :param value: Value to convert to nan</span>
+<span class="sd">    :type value:</span>
+<span class="sd">    :param msg: Optional message to print to screen</span>
+<span class="sd">    :returns: Numpy nan value</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span></div>
+
+
+<div class="viewcode-block" id="subset_data"><a class="viewcode-back" href="../../code.html#gagepy.utils.subset_data">[docs]</a><span class="k">def</span> <span class="nf">subset_data</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a subset of date and value arrays to match the range of dates</span>
+<span class="sd">    between a given start_date and end_date.  If start_date and end_date are not</span>
+<span class="sd">    within the range of dates specified in dates, then the start_date and</span>
+<span class="sd">    end_date are set to the first and last dates in the dates array.</span>
+
+<span class="sd">    :param dates: Array of dates as datetime objects</span>
+<span class="sd">    :type dates: numpy.ndarray</span>
+<span class="sd">    :param values: Array of numeric values</span>
+<span class="sd">    :type values: numpy.ndarray</span>
+<span class="sd">    :param start_date: A datetime object</span>
+<span class="sd">    :type start_date: datetime.datetime</span>
+<span class="sd">    :param end_date: A datetime object</span>
+<span class="sd">    :type end_date: datetime.datetime</span>
+<span class="sd">    :returns: A subset of dates and values</span>
+<span class="sd">    :rtype: tuple</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Length of dates {} does not equal length of values {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># if start_date or end_date are not within dates, set them to the first and last elements in dates</span>
+        <span class="k">if</span> <span class="n">start_date</span> <span class="o">&lt;</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">start_date</span> <span class="o">&gt;</span> <span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">end_date</span> <span class="o">&gt;</span> <span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="n">end_date</span> <span class="o">&lt;</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">end_date</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># find start and ending indices; have to convert idx from array to int to slice</span>
+        <span class="n">start_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dates</span> <span class="o">==</span> <span class="n">start_date</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">end_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dates</span> <span class="o">==</span> <span class="n">end_date</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># subset variable and date range;</span>
+        <span class="n">date_subset</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">values_subset</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">date_subset</span><span class="p">,</span> <span class="n">values_subset</span></div>
+
+
+<div class="viewcode-block" id="find_start_end_dates"><a class="viewcode-back" href="../../code.html#gagepy.utils.find_start_end_dates">[docs]</a><span class="k">def</span> <span class="nf">find_start_end_dates</span><span class="p">(</span><span class="n">dates1</span><span class="p">,</span> <span class="n">dates2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find start and end dates between lists (or arrays) of datetime objects</span>
+<span class="sd">    that do not have the same length.</span>
+
+<span class="sd">    The start date will be the later of two dates.</span>
+
+<span class="sd">    The end date will be the earlier of the two dates.</span>
+
+<span class="sd">    :param dates1: List or array of datetime objects</span>
+<span class="sd">    :type dates1: list or numpy.ndarray</span>
+<span class="sd">    :param dates2: List or array of datetime objects</span>
+<span class="sd">    :type dates2: list or numpy.ndarray</span>
+<span class="sd">    :returns: Tuple of start date and end date</span>
+<span class="sd">    :rtype: tuple</span>
+<span class="sd">    :raises: ValueError for non overlapping dates</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># convert dates to sets for set intersection</span>
+    <span class="n">date1_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">dates1</span><span class="p">)</span>
+    <span class="n">date2_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">dates2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">date1_set</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">date2_set</span><span class="p">):</span>
+        <span class="c1"># start date</span>
+        <span class="k">if</span> <span class="n">dates2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dates1</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">dates2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">dates1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># end date</span>
+        <span class="k">if</span> <span class="n">dates2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dates1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">end_date</span> <span class="o">=</span> <span class="n">dates1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">end_date</span> <span class="o">=</span> <span class="n">dates2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span>
+    <span class="k">else</span><span class="p">:</span>
+       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No overlapping dates.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_ending"><a class="viewcode-back" href="../../code.html#gagepy.utils.add_ending">[docs]</a><span class="k">def</span> <span class="nf">add_ending</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add a new ending to a filename,</span>
+
+<span class="sd">    :param file: File or path to file</span>
+<span class="sd">    :type file: string</span>
+<span class="sd">    :param suffix: Suffix to add to end of file</span>
+<span class="sd">    :type suffix: string</span>
+<span class="sd">    :param ext: File extension</span>
+<span class="sd">    :type ext: string</span>
+<span class="sd">    :param delimiter: Delimiter, default is the dash character</span>
+<span class="sd">    :type delimiter: string</span>
+<span class="sd">    :returns: New file</span>
+<span class="sd">    :rtype: string</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       Spaces in filenames are replaced by delimiter to keep with Unix file naming conventions.</span>
+
+<span class="sd">    &gt;&gt;&gt; import utils</span>
+<span class="sd">    &gt;&gt;&gt; utils.add_ending(file=&quot;dv.txt&quot;, suffix=&quot;summary&quot;, ext=&quot;.txt&quot;)</span>
+<span class="sd">    &#39;dv-summary.txt&#39;</span>
+<span class="sd">    &gt;&gt;&gt; utils.add_ending(file=&quot;dv.rdb&quot;, suffix=&quot;summary&quot;, ext=&quot;.rst&quot;, delimiter=&quot;_&quot;)</span>
+<span class="sd">    &#39;dv_summary.rst&#39;</span>
+<span class="sd">    &gt;&gt;&gt; utils.add_ending(file=&quot;/home/play/dv.rdb&quot;, suffix=&quot;summary&quot;, ext=&quot;.rst&quot;)</span>
+<span class="sd">    &#39;/home/play/dv-summary.rst&#39;</span>
+<span class="sd">    &gt;&gt;&gt; utils.add_ending(file=&quot;daily values.rdb&quot;, suffix=&quot;summary&quot;, ext=&quot;.rst&quot;)</span>
+<span class="sd">    &#39;daily-values-summary.rst&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;File must be a string.&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">suffix</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Suffix must be a string.&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Extension must be a string.&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Delimiter must be a string.&quot;</span>
+
+    <span class="n">path</span><span class="p">,</span> <span class="n">fullname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+    <span class="n">name</span><span class="p">,</span> <span class="n">ext_orig</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">suffix</span><span class="p">:</span>
+        <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ext</span><span class="p">:</span>
+        <span class="n">newname</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">+</span> <span class="n">ext</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">newname</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">+</span> <span class="n">ext_orig</span>
+
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">newname</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gage-sketch.jpg" alt="Logo"/>
+            </a></p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code documentation &mdash; gagepy 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gagepy 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-gagepy.cli">
+<span id="code-documentation"></span><h1>Code documentation<a class="headerlink" href="#module-gagepy.cli" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gagepy-cli">
+<h2>gagepy.cli<a class="headerlink" href="#gagepy-cli" title="Permalink to this headline">¶</a></h2>
+<p>Main <cite>gagepy</cite> Command Line Interface (CLI)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file for more details</td>
+</tr>
+</tbody>
+</table>
+</div>
+<span class="target" id="module-gagepy.rdb"></span><div class="section" id="gagepy-rdb">
+<h2>gagepy.rdb<a class="headerlink" href="#gagepy-rdb" title="Permalink to this headline">¶</a></h2>
+<p>Module containing functionality that reads and parses tab-delimited
+formatted timeseries files from the United States Geological Survey (USGS)
+National Water Information System (NWIS). The tab-delimited data files
+are also referred to as &#8220;rdb&#8221; format.  Please see
+<a class="reference external" href="http://pubs.usgs.gov/of/2003/ofr03123/6.4rdb_format.pdf">http://pubs.usgs.gov/of/2003/ofr03123/6.4rdb_format.pdf</a> for more information
+regarding the tab-delimited (rdb) format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="gagepy.rdb.parse_daily_date">
+<code class="descclassname">gagepy.rdb.</code><code class="descname">parse_daily_date</code><span class="sig-paren">(</span><em>date</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/rdb.html#parse_daily_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.rdb.parse_daily_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a string of the form yyyy-mm-dd and return a datetime object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">daily_date</span> <span class="o">=</span> <span class="n">parse_daily_date</span><span class="p">(</span><span class="s2">&quot;2015-08-01&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">daily_date</span>
+<span class="go">datetime.datetime(2015, 8, 1, 0, 0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.rdb.parse_description">
+<code class="descclassname">gagepy.rdb.</code><code class="descname">parse_description</code><span class="sig-paren">(</span><em>description</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/rdb.html#parse_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.rdb.parse_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the parameter name and unit from the parameter description</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>description</strong> (<em>string</em>) &#8211; A description containing a parameter name and unit</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Name and units of a parameter</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Temperature, water, degrees Celsius&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_description</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+<span class="go">(&#39;Temperature&#39;, &#39;degrees Celsius&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.rdb.parse_instantaneous_date">
+<code class="descclassname">gagepy.rdb.</code><code class="descname">parse_instantaneous_date</code><span class="sig-paren">(</span><em>date</em>, <em>time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/rdb.html#parse_instantaneous_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.rdb.parse_instantaneous_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a date string of the form &#8216;yyyy-mm-dd&#8217; and a time string of the
+form &#8216;mm:ss EDT&#8217; and return a datetime object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Param:</th><td class="field-body">time</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">datetime.datetime</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">instantaneous_date</span> <span class="o">=</span> <span class="n">parse_instantaneous_date</span><span class="p">(</span><span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;2015-08-01&quot;</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s2">&quot;00:15        EDT&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instantaneous_date</span>
+<span class="go">datetime.datetime(2015, 8, 1, 0, 15)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.rdb.parse_parameter_code">
+<code class="descclassname">gagepy.rdb.</code><code class="descname">parse_parameter_code</code><span class="sig-paren">(</span><em>match</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/rdb.html#parse_parameter_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.rdb.parse_parameter_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process a regular expression match for a parameter code and a description.
+The parameter code and description string line is made up of 4 parts:</p>
+<ol class="arabic simple">
+<li>a data descriptor value</li>
+<li>a parameter code value</li>
+<li>a parameter statistic value (may or may not exist)</li>
+<li>a parameter description</li>
+</ol>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>match</strong> (<em>_sre.SRE_Match</em>) &#8211; a regular expression match object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">parameter code, statistic (if it exists), and description</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameter_code_re</span> <span class="o">=</span> <span class="s2">&quot;(#)\D+([0-9]</span><span class="si">{2}</span><span class="s2">)\D+([0-9]</span><span class="si">{5}</span><span class="s2">)(\D+[0-9]</span><span class="si">{5}</span><span class="s2">)?(.+)&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;#       06      00060   00003   Discharge, cubic feet per second (Mean)&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">rdb</span><span class="o">.</span><span class="n">parameter_code_re</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameter_code</span> <span class="o">=</span> <span class="n">rdb</span><span class="o">.</span><span class="n">parse_parameter_code</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameter_code</span>
+<span class="go">(&#39;06_00060_00003&#39;, &#39;Discharge, cubic feet per second (Mean)&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.rdb.read_rdb">
+<code class="descclassname">gagepy.rdb.</code><code class="descname">read_rdb</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/rdb.html#read_rdb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.rdb.read_rdb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open file and create a file object for read_file_in(filestream) to process.
+Return a USGSGage object containing all relevant data.  This function is
+responsible to opening the file, removing the file opening responsibility
+from read_file_in(filestream) so that read_file_in(filestream) can be unit tested.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filepath</strong> (<em>string</em>) &#8211; path to file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dictionary</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#gagepy.usgsgage.USGSGage" title="gagepy.usgsgage.USGSGage"><code class="xref py py-class docutils literal"><span class="pre">USGSGage</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.rdb.read_rdb_in">
+<code class="descclassname">gagepy.rdb.</code><code class="descname">read_rdb_in</code><span class="sig-paren">(</span><em>filestream</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/rdb.html#read_rdb_in"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.rdb.read_rdb_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that reads the tab-delimited USGS timeseries data file,
+and returns a USGSGage object containing all the data and information contained
+in the data file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filestream</strong> (<em>_io.TextIOWrapper</em>) &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.usgsgage"></span><div class="section" id="gagepy-usgsgage">
+<h2>gagepy.usgsgage<a class="headerlink" href="#gagepy-usgsgage" title="Permalink to this headline">¶</a></h2>
+<p>Class that contains data and functionality of a United States Geological
+Survey (USGS) gage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="gagepy.usgsgage.USGSGage">
+<em class="property">class </em><code class="descclassname">gagepy.usgsgage.</code><code class="descname">USGSGage</code><span class="sig-paren">(</span><em>name</em>, <em>parameters</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/usgsgage.html#USGSGage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.usgsgage.USGSGage" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that contains data and functionality of a United States Geological
+Survey (USGS) gage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; Name of USGS gage</li>
+<li><strong>parameters</strong> (<em>list</em>) &#8211; List of Parameter objects that contain data and functionality of a timeseries data parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#gagepy.parameter.Parameter" title="gagepy.parameter.Parameter"><code class="xref py py-class docutils literal"><span class="pre">Parameter</span></code></a></p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;USGS 03290500 KENTUCKY RIVER AT LOCK 2 AT LOCKPORT, KY&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">datetime</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>   <span class="n">Parameter</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Discharge&quot;</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">dates</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">112</span><span class="p">]),</span>
+<span class="gp">... </span>             <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;cubic feet per second (Mean)&quot;</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;06_00060_00003&quot;</span><span class="p">),</span>
+<span class="gp">... </span>   <span class="n">Parameter</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Stage&quot;</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">dates</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span>
+<span class="gp">... </span>             <span class="n">units</span> <span class="o">=</span> <span class="s2">&quot;feet&quot;</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;03_00065&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">usgs_gage</span> <span class="o">=</span> <span class="n">USGSGage</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">usgs_gage</span><span class="o">.</span><span class="n">name</span>
+<span class="go">USGS 03290500 KENTUCKY RIVER AT LOCK 2 AT LOCKPORT, KY</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="gagepy.usgsgage.USGSGage.get_summary_data">
+<code class="descname">get_summary_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/usgsgage.html#USGSGage.get_summary_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.usgsgage.USGSGage.get_summary_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of the data for the summary</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.parameter"></span><div class="section" id="gagepy-parameter">
+<h2>gagepy.parameter<a class="headerlink" href="#gagepy-parameter" title="Permalink to this headline">¶</a></h2>
+<p>Class that contains data and functionality of a timeseries data parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="gagepy.parameter.Parameter">
+<em class="property">class </em><code class="descclassname">gagepy.parameter.</code><code class="descname">Parameter</code><span class="sig-paren">(</span><em>name</em>, <em>dates</em>, <em>values</em>, <em>units</em>, <em>code=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/parameter.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.parameter.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that contains data and functionality of a timeseries parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>string</em>) &#8211; Name of the parameter</li>
+<li><strong>dates</strong> (<em>numpy.ndarray</em>) &#8211; Array of datetime objects</li>
+<li><strong>values</strong> (<em>numpy.ndarray</em>) &#8211; Array of data values</li>
+<li><strong>units</strong> &#8211; Units of the parameter</li>
+<li><strong>code</strong> &#8211; A numeric code identifier of the parameter; default of None</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Length of dates and length of values must be equal to be a valid
+timeseries parameter.</p>
+</div>
+<dl class="method">
+<dt id="gagepy.parameter.Parameter.get_summary_data">
+<code class="descname">get_summary_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/parameter.html#Parameter.get_summary_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.parameter.Parameter.get_summary_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of the data for the summary</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gagepy.parameter.Parameter.max">
+<code class="descname">max</code><a class="headerlink" href="#gagepy.parameter.Parameter.max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the maximum ignoring any NaN values</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gagepy.parameter.Parameter.max_date">
+<code class="descname">max_date</code><a class="headerlink" href="#gagepy.parameter.Parameter.max_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the date that the maximum value occurred on</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gagepy.parameter.Parameter.mean">
+<code class="descname">mean</code><a class="headerlink" href="#gagepy.parameter.Parameter.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the mean ignoring any NaN values</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gagepy.parameter.Parameter.min">
+<code class="descname">min</code><a class="headerlink" href="#gagepy.parameter.Parameter.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the minimum ignoring any NaN values</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gagepy.parameter.Parameter.min_date">
+<code class="descname">min_date</code><a class="headerlink" href="#gagepy.parameter.Parameter.min_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the date that the min value occurred on</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gagepy.parameter.Parameter.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>path=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/parameter.html#Parameter.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.parameter.Parameter.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show and optionally save plot.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="gagepy.parameter.Parameter.plot_html">
+<code class="descname">plot_html</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/parameter.html#Parameter.plot_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.parameter.Parameter.plot_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an html string represenation of the figure</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.plotting"></span><div class="section" id="gagepy-plotting">
+<h2>gagepy.plotting<a class="headerlink" href="#gagepy-plotting" title="Permalink to this headline">¶</a></h2>
+<p>Module that contains functions for plotting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="gagepy.plotting.MousePositionDatePlugin">
+<em class="property">class </em><code class="descclassname">gagepy.plotting.</code><code class="descname">MousePositionDatePlugin</code><span class="sig-paren">(</span><em>fontsize=14</em>, <em>xfmt='%Y-%m-%d %H:%M:%S'</em>, <em>yfmt='.2f'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/plotting.html#MousePositionDatePlugin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.plotting.MousePositionDatePlugin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plugin for displaying mouse position with a datetime x axis.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.plotting.plot_parameter">
+<code class="descclassname">gagepy.plotting.</code><code class="descname">plot_parameter</code><span class="sig-paren">(</span><em>dates</em>, <em>values</em>, <em>mean</em>, <em>max</em>, <em>min</em>, <em>name</em>, <em>units</em>, <em>path=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/plotting.html#plot_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.plotting.plot_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show and optionally save plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.plotting.plot_parameter_html">
+<code class="descclassname">gagepy.plotting.</code><code class="descname">plot_parameter_html</code><span class="sig-paren">(</span><em>dates</em>, <em>values</em>, <em>name</em>, <em>units</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/plotting.html#plot_parameter_html"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.plotting.plot_parameter_html" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an html string of the figure</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.output"></span><div class="section" id="gagepy-output">
+<h2>gagepy.output<a class="headerlink" href="#gagepy-output" title="Permalink to this headline">¶</a></h2>
+<p>Module of classes that contains data and functionality to create various
+output views of data from a United States Geological Survey (USGS) gage.
+The outputs consist of data summaries in restructured text format and html
+format.  In addition, plots of the data can be output in json objects to be
+embedded in webpages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="gagepy.output.render_summary">
+<code class="descclassname">gagepy.output.</code><code class="descname">render_summary</code><span class="sig-paren">(</span><em>data</em>, <em>template_filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/output.html#render_summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.output.render_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render a summary of the data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> &#8211; Data to fill template with</li>
+<li><strong>type</strong> &#8211; dictionary</li>
+<li><strong>template_filename</strong> (<em>string</em>) &#8211; The filename of the template to fill</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.output.save_summary">
+<code class="descclassname">gagepy.output.</code><code class="descname">save_summary</code><span class="sig-paren">(</span><em>data</em>, <em>template_filename</em>, <em>output_file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/output.html#save_summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.output.save_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save summary as a restructured text file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> &#8211; Data to fill template with</li>
+<li><strong>type</strong> &#8211; dictionary</li>
+<li><strong>template_filename</strong> (<em>string</em>) &#8211; The filename of the template to fill</li>
+<li><strong>output_file</strong> (<em>string</em>) &#8211; The full path with filename of the output file to write</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.utils"></span><div class="section" id="gagepy-utils">
+<h2>gagepy.utils<a class="headerlink" href="#gagepy-utils" title="Permalink to this headline">¶</a></h2>
+<p>Utility helper functions for gagepy.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="gagepy.utils.add_ending">
+<code class="descclassname">gagepy.utils.</code><code class="descname">add_ending</code><span class="sig-paren">(</span><em>file</em>, <em>suffix</em>, <em>ext</em>, <em>delimiter='-'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#add_ending"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.add_ending" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new ending to a filename,</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>file</strong> (<em>string</em>) &#8211; File or path to file</li>
+<li><strong>suffix</strong> (<em>string</em>) &#8211; Suffix to add to end of file</li>
+<li><strong>ext</strong> (<em>string</em>) &#8211; File extension</li>
+<li><strong>delimiter</strong> (<em>string</em>) &#8211; Delimiter, default is the dash character</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">New file</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Spaces in filenames are replaced by delimiter to keep with Unix file naming conventions.</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">add_ending</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;dv.txt&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;.txt&quot;</span><span class="p">)</span>
+<span class="go">&#39;dv-summary.txt&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">add_ending</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;dv.rdb&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;.rst&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
+<span class="go">&#39;dv_summary.rst&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">add_ending</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;/home/play/dv.rdb&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
+<span class="go">&#39;/home/play/dv-summary.rst&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">add_ending</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;daily values.rdb&quot;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;.rst&quot;</span><span class="p">)</span>
+<span class="go">&#39;daily-values-summary.rst&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.find_start_end_dates">
+<code class="descclassname">gagepy.utils.</code><code class="descname">find_start_end_dates</code><span class="sig-paren">(</span><em>dates1</em>, <em>dates2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#find_start_end_dates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.find_start_end_dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find start and end dates between lists (or arrays) of datetime objects
+that do not have the same length.</p>
+<p>The start date will be the later of two dates.</p>
+<p>The end date will be the earlier of the two dates.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dates1</strong> (<em>list or numpy.ndarray</em>) &#8211; List or array of datetime objects</li>
+<li><strong>dates2</strong> (<em>list or numpy.ndarray</em>) &#8211; List or array of datetime objects</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Tuple of start date and end date</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">tuple</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ValueError for non overlapping dates</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.get_file_info">
+<code class="descclassname">gagepy.utils.</code><code class="descname">get_file_info</code><span class="sig-paren">(</span><em>filepath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#get_file_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.get_file_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a file&#8217;s directory and name for a file path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filepath</strong> (<em>string</em>) &#8211; Path to file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">File directory and file name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.get_file_paths">
+<code class="descclassname">gagepy.utils.</code><code class="descname">get_file_paths</code><span class="sig-paren">(</span><em>dirname</em>, <em>file_ext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#get_file_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.get_file_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of absolute file paths for certain files files in a directory.  Walks through
+subdirectories.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dirname</strong> (<em>string</em>) &#8211; Name of directory to start walking</li>
+<li><strong>file_ext</strong> &#8211; File extension to look for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">File_ext type:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of absolute file paths</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.is_float">
+<code class="descclassname">gagepy.utils.</code><code class="descname">is_float</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#is_float"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.is_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if a string value can be converted to a float and False otherwise.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> &#8211; Value to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">is_float</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;2.5&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">is_float</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">is_float</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;5.5_&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.rmchars">
+<code class="descclassname">gagepy.utils.</code><code class="descname">rmchars</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#rmchars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.rmchars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove special characters from alphanumeric values except for period (.)
+and negative (-) characters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>string</em>) &#8211; Alphanumeric value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Alphanumeric value stripped of any special characters</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">rmchars</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;*6.5_&quot;</span><span class="p">)</span>
+<span class="go">&#39;6.5&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">rmchars</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;ICE&quot;</span><span class="p">)</span>
+<span class="go">&#39;ICE&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">rmchars</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;-4.2&quot;</span><span class="p">)</span>
+<span class="go">&#39;-4.2&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utils</span><span class="o">.</span><span class="n">rmchars</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;%&amp;!@#8.32&amp;#*;&quot;</span><span class="p">)</span>
+<span class="go">&#39;8.32&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.subset_data">
+<code class="descclassname">gagepy.utils.</code><code class="descname">subset_data</code><span class="sig-paren">(</span><em>dates</em>, <em>values</em>, <em>start_date</em>, <em>end_date</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#subset_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.subset_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a subset of date and value arrays to match the range of dates
+between a given start_date and end_date.  If start_date and end_date are not
+within the range of dates specified in dates, then the start_date and
+end_date are set to the first and last dates in the dates array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dates</strong> (<em>numpy.ndarray</em>) &#8211; Array of dates as datetime objects</li>
+<li><strong>values</strong> (<em>numpy.ndarray</em>) &#8211; Array of numeric values</li>
+<li><strong>start_date</strong> (<em>datetime.datetime</em>) &#8211; A datetime object</li>
+<li><strong>end_date</strong> (<em>datetime.datetime</em>) &#8211; A datetime object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A subset of dates and values</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.to_float">
+<code class="descclassname">gagepy.utils.</code><code class="descname">to_float</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#to_float"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.to_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a value to a float type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> &#8211; Value to convert to float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Value as a float</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="gagepy.utils.to_nan">
+<code class="descclassname">gagepy.utils.</code><code class="descname">to_nan</code><span class="sig-paren">(</span><em>value</em>, <em>msg=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gagepy/utils.html#to_nan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.utils.to_nan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a value to a numpy nan and print a message if available.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> &#8211; Value to convert to nan</li>
+<li><strong>msg</strong> &#8211; Optional message to print to screen</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Numpy nan value</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.exceptions"></span><div class="section" id="gagepy-exceptions">
+<h2>gagepy.exceptions<a class="headerlink" href="#gagepy-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>All exceptions for gagepy code base are defined here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+<dl class="exception">
+<dt id="gagepy.exceptions.GagepyException">
+<em class="property">exception </em><code class="descclassname">gagepy.exceptions.</code><code class="descname">GagepyException</code><a class="reference internal" href="_modules/gagepy/exceptions.html#GagepyException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.exceptions.GagepyException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base exception class.  All gagepy custion exception subclass this class.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="gagepy.exceptions.InvalidRDB">
+<em class="property">exception </em><code class="descclassname">gagepy.exceptions.</code><code class="descname">InvalidRDB</code><a class="reference internal" href="_modules/gagepy/exceptions.html#InvalidRDB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gagepy.exceptions.InvalidRDB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raised if the rdb file is not a valid rdb file.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-gagepy.globals"></span><div class="section" id="gagepy-globals">
+<h2>gagepy.globals<a class="headerlink" href="#gagepy-globals" title="Permalink to this headline">¶</a></h2>
+<p>Module that contains global values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">2016 by Jeremiah Lant, see AUTHORS</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">United States Geological Survey (USGS), see LICENSE file</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/gage-sketch.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Code documentation</a><ul>
+<li><a class="reference internal" href="#gagepy-cli">gagepy.cli</a></li>
+<li><a class="reference internal" href="#gagepy-rdb">gagepy.rdb</a></li>
+<li><a class="reference internal" href="#gagepy-usgsgage">gagepy.usgsgage</a></li>
+<li><a class="reference internal" href="#gagepy-parameter">gagepy.parameter</a></li>
+<li><a class="reference internal" href="#gagepy-plotting">gagepy.plotting</a></li>
+<li><a class="reference internal" href="#gagepy-output">gagepy.output</a></li>
+<li><a class="reference internal" href="#gagepy-utils">gagepy.utils</a></li>
+<li><a class="reference internal" href="#gagepy-exceptions">gagepy.exceptions</a></li>
+<li><a class="reference internal" href="#gagepy-globals">gagepy.globals</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorial.html" title="previous chapter">Tutorial</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/code.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

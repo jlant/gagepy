@@ -3,7 +3,7 @@ __pycache__
 .cache
 
 # Sphinx
-docs/_build
+#docs/_build
 
 # Local install with Setuptools
 gagepy.egg-info/
