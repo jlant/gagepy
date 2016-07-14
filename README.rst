@@ -16,20 +16,78 @@ Features
 * Easily generate a gage summary web page that includes interactive plots and tables.
 * User-friendly command-line interface.
 
-Example
--------
-
-Add a short example
+Usage
+-----
 
 ::
 
-    show some example code here
+    $ gagepy --help
+    Usage: gagepy-script.py [OPTIONS] COMMAND [ARGS]...
+
+    Options:
+      --verbose        Print summary.
+      --plot           Show plot.
+      --html           Save summary as html file.
+      --save PATH      Save summary to specified path.
+      --saveplot PATH  Save plots to specified path.
+      --help           Show this message and exit.
+
+    Commands:
+      readrdb  Read rdb file(s).
+
+
+Example
+-------
+
+Process a data file from the USGS streamgage 03287500 on the Kentucky River near Frankfort, Kentucky
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following example shows how to create a summary webpage with interactive plots and tables using the ``--html``
+option on a USGS tab-delimited (`RDB format`_) streamgage data file.
+
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/tree/master/docs/_static/gagepy-screencast.gif
+        :alt: Gagepy screencast
+
+::
+
+    $ gagepy --html readrdb data/usgs-03287500-uv.txt
+    Processing: data/usgs-03287500-uv.txt
+    Replacing missing value with nan: 01_00010 on 2016-07-09 12:30 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-09 13:00 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-10 04:30 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-10 05:15 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-10 05:45 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-10 08:45 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-11 01:45 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-11 03:00 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-11 03:30 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-11 04:30 - Temperature, water, degrees Celsius
+    Replacing missing value with nan: 01_00010 on 2016-07-11 09:30 - Temperature, water, degrees Celsius
+    Saving summary: data/usgs-03287500-uv-summary.html
+
+gagepy prints the file name and corresponding path being processed and prints the name and path of the summary web page
+that is created.  In addition, if the data file contains missing data values, gagepy prints some warning information and
+explains how it is handling that missing data.
+
+The following is a screen capture of the top of the resulting summary web page:
+
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/tree/master/docs/_static/usgs-03287500-uv-summary-table.png
+        :target: data/usgs-03287500-uv-summary.html
+        :alt: Top of the summary web page
+
+The following is a screen capture of an interactive plot on the resulting summary web page:
+
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/tree/master/docs/_static/usgs-03287500-uv-summary-plot.png
+        :target: data/usgs-03287500-uv-summary.html
+        :alt: Interactive plot on the summary web page
+
+To view the resulting summary web page, open the "usgs-03287500-uv-summary.html" web page in a web browser.
 
 
 Documentation
 -------------
 
-Add a link to the project and code documenation site.
+Currently, the project and code documentation can be found locally in ``./docs/_build/html/index.html``.
 
 
 Tests
@@ -147,5 +205,6 @@ Jeremiah Lant <jlant@usgs.gov>
 .. _Installing Python Modules: https://docs.python.org/3.5/install/
 .. _How Installation Works: https://docs.python.org/3.5/install/#how-installation-works
 .. _National Water Information System (NWIS): http://waterdata.usgs.gov/nwis
+.. _RDB format: http://pubs.usgs.gov/of/2003/ofr03123/6.4rdb_format.pdf
 .. _Click: http://click.pocoo.org/6/
 .. _mpld3: http://mpld3.github.io/

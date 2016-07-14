@@ -5,7 +5,7 @@
 
     Module that contains functions for plotting.
 
-    :copyright: 2015 by Jeremiah Lant, see AUTHORS
+    :authors: 2016 by Jeremiah Lant, see AUTHORS
     :license: United States Geological Survey (USGS), see LICENSE file
 """
 

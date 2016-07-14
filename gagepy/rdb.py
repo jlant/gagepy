@@ -4,13 +4,14 @@
     gagepy.rdb
     ~~~~~~~~~~
 
-    Module containing functionality that reads and parses tab-delimited (rdb)
+    Module containing functionality that reads and parses tab-delimited
     formatted timeseries files from the United States Geological Survey (USGS)
-    National Water Information System (NWIS). Please see
+    National Water Information System (NWIS). The tab-delimited data files
+    are also referred to as "rdb" format.  Please see
     http://pubs.usgs.gov/of/2003/ofr03123/6.4rdb_format.pdf for more information
     regarding the tab-delimited (rdb) format.
 
-    :copyright: 2015 by Jeremiah Lant, see AUTHORS
+    :authors: 2016 by Jeremiah Lant, see AUTHORS
     :license: United States Geological Survey (USGS), see LICENSE file
 """
 
@@ -54,7 +55,7 @@ def read_rdb(filepath):
 
 
 def read_rdb_in(filestream):
-    """Function that reads the tab-delimited (rdb) USGS timeseries data file,
+    """Function that reads the tab-delimited USGS timeseries data file,
     and returns a USGSGage object containing all the data and information contained
     in the data file.
 

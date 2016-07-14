@@ -8,7 +8,7 @@
     .. note::
        Please see the USGS information on webservices - http://nwis.waterdata.usgs.gov/nwis/?automated_retrieval_info
 
-    :copyright: 2015 by Jeremiah Lant, see AUTHORS
+    :authors: 2016 by Jeremiah Lant, see AUTHORS
     :license: United States Geological Survey (USGS), see LICENSE file
 """
 

@@ -6,7 +6,7 @@
 
     Utility helper functions for gagepy.
 
-    :copyright: 2015 by Jeremiah Lant, see AUTHORS
+    :authors: 2016 by Jeremiah Lant, see AUTHORS
     :license: United States Geological Survey (USGS), see LICENSE file
 """
 

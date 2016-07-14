@@ -9,7 +9,7 @@
     format.  In addition, plots of the data can be output in json objects to be
     embedded in webpages.
 
-    :copyright: 2015 by Jeremiah Lant, see AUTHORS
+    :authors: 2016 by Jeremiah Lant, see AUTHORS
     :license: United States Geological Survey (USGS), see LICENSE file
 """
 

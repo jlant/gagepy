@@ -1,0 +1,6 @@
+@import url("alabaster.css");
+
+a.reference {
+    text-decoration: none;
+    border-bottom: 0px dotted #004B6B;
+}

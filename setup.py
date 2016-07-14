@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, find_packages
 
 
 with open("README.rst") as readme_file:
@@ -34,9 +34,7 @@ setup(
     author="Jeremiah Lant",
     author_email="jlant@usgs.gov",
     url="",
-    packages=[
-        "gagepy",
-    ],
+    packages=find_packages(),
     package_dir={"gagepy":
                  "gagepy"},
     entry_points={
@@ -48,7 +46,7 @@ setup(
     install_requires=requirements,
     license=license,
     zip_safe=False,
-    keywords="gagepy",
+    keywords=["gagepy", "water", "USGS", "United States Geological Survey"],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
