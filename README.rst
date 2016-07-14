@@ -45,7 +45,7 @@ Process a data file from the USGS streamgage 03287500 on the Kentucky River near
 The following example shows how to create a summary webpage with interactive plots and tables using the ``--html``
 option on a USGS tab-delimited (`RDB format`_) streamgage data file.
 
-.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/blob/master/docs/_static/gagepy-screencast.gif
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/raw/5c149b6025f6478f69e37deb5282e80fe07af1e1/docs/_static/gagepy-screencast.gif
         :alt: gagepy screencast
 
 ::
@@ -65,18 +65,18 @@ option on a USGS tab-delimited (`RDB format`_) streamgage data file.
     Replacing missing value with nan: 01_00010 on 2016-07-11 09:30 - Temperature, water, degrees Celsius
     Saving summary: data/usgs-03287500-uv-summary.html
 
-gagepy prints the file name and corresponding path being processed and prints the name and path of the summary web page
-that is created.  In addition, if the data file contains missing data values, gagepy prints some warning information and
-explains how it is handling that missing data.
+By default, gagepy starts by printing the filename and corresponding path being processed. gagepy ends by printing the
+name and path of the summary web page that is created.  In addition, if the data file contains missing data values,
+gagepy prints warning information and explains how it is handling that missing data.
 
 The following is a screen capture of the top of the resulting summary web page:
 
-.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/blob/master/docs/_static/usgs-03287500-uv-summary-table.png
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/raw/5c149b6025f6478f69e37deb5282e80fe07af1e1/docs/_static/usgs-03287500-uv-summary-table.png
         :alt: Top of the summary web page
 
 The following is a screen capture of an interactive plot on the resulting summary web page:
 
-.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/blob/master/docs/_static/usgs-03287500-uv-summary-plot.png
+.. image:: https://gitlab.cr.usgs.gov/jlant/gagepy/raw/5c149b6025f6478f69e37deb5282e80fe07af1e1/docs/_static/usgs-03287500-uv-summary-plot.png
         :alt: Interactive plot on the summary web page
 
 To view the resulting summary web page, open the "usgs-03287500-uv-summary.html" web page in a web browser.
