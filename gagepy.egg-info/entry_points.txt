@@ -1,0 +1,3 @@
+[console_scripts]
+gagepy = gagepy.cli:main
+

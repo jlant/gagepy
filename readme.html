@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>gagepy &mdash; gagepy 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="gagepy 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Welcome to gagepy’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <a class="reference external image-reference" href="http://www.usgs.gov/"><img alt="U.S. Geological Survey logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/USGS_logo_green.svg/320px-USGS_logo_green.svg.png" /></a>
+<div class="section" id="gagepy">
+<h1>gagepy<a class="headerlink" href="#gagepy" title="Permalink to this headline">¶</a></h1>
+<p>A Python package that processes and analyzes data files from <a class="reference external" href="https://www.usgs.gov/">U.S. Geological Survey (USGS)</a> streamflow gages.  The
+<a class="reference external" href="https://www.usgs.gov/">USGS</a> streamflow gages provide water data across the United States.  Streamflow gage data
+and corresponding data files can be found at the <a class="reference external" href="https://www.usgs.gov/">USGS</a> <a class="reference external" href="http://waterdata.usgs.gov/nwis">National Water Information System (NWIS)</a>.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Processes <a class="reference external" href="https://www.usgs.gov/">U.S. Geological Survey (USGS)</a> streamflow gage data files available from the <a class="reference external" href="https://www.usgs.gov/">USGS</a> <a class="reference external" href="http://waterdata.usgs.gov/nwis">National Water Information System (NWIS)</a> in various formats including <code class="docutils literal"><span class="pre">*.rdb</span></code> and <code class="docutils literal"><span class="pre">*.json</span></code>.</li>
+<li>Easily generate a gage summary web page that includes interactive plots and tables.</li>
+<li>User-friendly command-line interface.</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ gagepy --help
+Usage: gagepy-script.py [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --verbose        Print summary.
+  --plot           Show plot.
+  --html           Save summary as html file.
+  --save PATH      Save summary to specified path.
+  --saveplot PATH  Save plots to specified path.
+  --help           Show this message and exit.
+
+Commands:
+  readrdb  Read rdb file(s).
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="process-a-data-file-from-the-usgs-streamgage-03287500-on-the-kentucky-river-near-frankfort-kentucky">
+<h3>Process a data file from the USGS streamgage 03287500 on the Kentucky River near Frankfort, Kentucky<a class="headerlink" href="#process-a-data-file-from-the-usgs-streamgage-03287500-on-the-kentucky-river-near-frankfort-kentucky" title="Permalink to this headline">¶</a></h3>
+<p>The following example shows how to create a summary webpage with interactive plots and tables using the <code class="docutils literal"><span class="pre">--html</span></code>
+option on a USGS tab-delimited (<a class="reference external" href="http://pubs.usgs.gov/of/2003/ofr03123/6.4rdb_format.pdf">RDB format</a>) streamgage data file.</p>
+<img alt="gagepy screencast" src="https://gitlab.cr.usgs.gov/jlant/gagepy/raw/5c149b6025f6478f69e37deb5282e80fe07af1e1/docs/_static/gagepy-screencast.gif" />
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ gagepy --html readrdb data/usgs-03287500-uv.txt
+Processing: data/usgs-03287500-uv.txt
+Replacing missing value with nan: 01_00010 on 2016-07-09 12:30 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-09 13:00 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-10 04:30 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-10 05:15 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-10 05:45 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-10 08:45 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-11 01:45 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-11 03:00 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-11 03:30 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-11 04:30 - Temperature, water, degrees Celsius
+Replacing missing value with nan: 01_00010 on 2016-07-11 09:30 - Temperature, water, degrees Celsius
+Saving summary: data/usgs-03287500-uv-summary.html
+</pre></div>
+</div>
+<p>By default, gagepy starts by printing the filename and corresponding path being processed. gagepy ends by printing the
+name and path of the summary web page that is created.  In addition, if the data file contains missing data values,
+gagepy prints warning information and explains how it is handling that missing data.</p>
+<p>The following is a screen capture of the top of the resulting summary web page:</p>
+<img alt="Top of the summary web page" src="https://gitlab.cr.usgs.gov/jlant/gagepy/raw/5c149b6025f6478f69e37deb5282e80fe07af1e1/docs/_static/usgs-03287500-uv-summary-table.png" />
+<p>The following is a screen capture of an interactive plot on the resulting summary web page:</p>
+<img alt="Interactive plot on the summary web page" src="https://gitlab.cr.usgs.gov/jlant/gagepy/raw/5c149b6025f6478f69e37deb5282e80fe07af1e1/docs/_static/usgs-03287500-uv-summary-plot.png" />
+<p>To view the resulting summary web page, open the &#8220;usgs-03287500-uv-summary.html&#8221; web page in a web browser.</p>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Currently, the project and code documentation can be found locally in <code class="docutils literal"><span class="pre">./docs/_build/html/index.html</span></code>.</p>
+</div>
+<div class="section" id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h2>
+<p>A suite of tests were built using <a class="reference external" href="http://pytest.org/latest/">pytest</a>.</p>
+<p>To run the test suite, from the command line in the project&#8217;s root directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ py.test tests/
+</pre></div>
+</div>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://click.pocoo.org/6/">Click</a> (v6.6)</li>
+<li><a class="reference external" href="http://mpld3.github.io/">mpld3</a> (v0.2)</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install gagepy from source:</p>
+<ol class="arabic">
+<li><p class="first">Check that you have <a class="reference external" href="https://www.python.org/">Python</a> installed:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python --version
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you do not have <a class="reference external" href="https://www.python.org/">Python</a> installed, please download the latest version from <a class="reference external" href="https://www.python.org/downloads/">Python&#8217;s download page</a></p>
+<ol class="arabic" start="2">
+<li><p class="first">Download gagepy from the repository and extract to a directory of your choice.</p>
+<p>Or, if you have <a class="reference external" href="https://git-scm.com/">git</a> installed you can clone the project:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone &lt;remote url to gagepy&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">Navigate to the project&#8217;s root directory where the setup script called <cite>setup.py</cite> is located:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd gagepy/
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="line-block">
+<div class="line">The <cite>setup.py</cite> is a Python file that contains information regarding the installation of a Python module/package, and</div>
+<div class="line">usually specifies that the module/package has been packaged and distributed with the standard Python distribution</div>
+<div class="line">package called <a class="reference external" href="https://docs.python.org/3/library/distutils.html">Distutils</a>.</div>
+</div>
+<ol class="arabic" start="4">
+<li><p class="first">Run <cite>setup.py</cite> with the <cite>install</cite> command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>gagepy will now be installed to the standard location for third-party Python modules on your
+computer platform.</p>
+<p>For more information regarding installing third-party Python modules, please see <a class="reference external" href="https://docs.python.org/3.5/install/">Installing Python Modules</a>
+For a description of how installation works including where the module will be installed on your computer platform,
+please see <a class="reference external" href="https://docs.python.org/3.5/install/#how-installation-works">How Installation Works</a>.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>This software is licensed under <a class="reference external" href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> and is in the <a class="reference external" href="https://en.wikipedia.org/wiki/Public_domain">public domain</a> because it contains materials that originally
+came from the <a class="reference external" href="https://www.usgs.gov/">U.S. Geological Survey (USGS)</a>, an agency of the <a class="reference external" href="https://www.doi.gov/">United States Department of Interior</a>. For more
+information, see the <a class="reference external" href="http://www.usgs.gov/visual-id/credit_usgs.html#copyright/">official USGS copyright policy</a>.</p>
+<a class="reference external image-reference" href="http://creativecommons.org/publicdomain/zero/1.0/"><img alt="Creative Commons logo" src="http://i.creativecommons.org/p/zero/1.0/88x31.png" /></a>
+</div>
+<div class="section" id="disclaimer">
+<h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h2>
+<p>This software is preliminary or provisional and is subject to revision. It is being provided to meet the need for timely
+best science. The software has not received final approval by the U.S. Geological Survey (USGS). No warranty, expressed
+or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor
+shall the fact of release constitute any such warranty. The software is provided on the condition that neither the USGS
+nor the U.S. Government shall be held liable for any damages resulting from the authorized or unauthorized use of the
+software.</p>
+<p>The USGS provides no warranty, expressed or implied, as to the correctness of the furnished software or the suitability
+for any purpose. The software has been tested, but as with any complex software, there could be undetected errors. Users
+who find errors are requested to report them to the USGS.</p>
+<p>References to non-USGS products, trade names, and (or) services are provided for information purposes only and do not
+constitute endorsement or warranty, express or implied, by the USGS, U.S. Department of Interior, or U.S. Government, as
+to their suitability, content, usefulness, functioning, completeness, or accuracy.</p>
+<p>Although this program has been used by the USGS, no warranty, expressed or implied, is made by the USGS or the United
+States Government as to the accuracy and functioning of the program and related program material nor shall the fact of
+distribution constitute any such warranty, and no responsibility is assumed by the USGS in connection therewith.</p>
+<p>This software is provided &#8220;AS IS.&#8221;</p>
+</div>
+<div class="section" id="author">
+<h2>Author<a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h2>
+<p>Jeremiah Lant &lt;<a class="reference external" href="mailto:jlant&#37;&#52;&#48;usgs&#46;gov">jlant<span>&#64;</span>usgs<span>&#46;</span>gov</a>&gt;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/gage-sketch.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">gagepy</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a><ul>
+<li><a class="reference internal" href="#process-a-data-file-from-the-usgs-streamgage-03287500-on-the-kentucky-river-near-frankfort-kentucky">Process a data file from the USGS streamgage 03287500 on the Kentucky River near Frankfort, Kentucky</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#tests">Tests</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#disclaimer">Disclaimer</a></li>
+<li><a class="reference internal" href="#author">Author</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to gagepy&#8217;s documentation!</a></li>
+      <li>Next: <a href="overview.html" title="next chapter">Overview</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      
+      
+      
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/readme.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
